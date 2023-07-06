@@ -21,8 +21,20 @@ if ( ! function_exists( 'devtask_scripts_styles' ) ) :
 		$theme_version = wp_get_theme()->get( 'Version' );
 		$version_string = is_string( $theme_version ) ? $theme_version : false;
 
+		// wp_register_script(
+		// 	'devtask-tailwind-script', "https://cdn.tailwindcss.com",
+		// 	array(),
+		// 	$version_string
+		// );
+
+		wp_register_style(
+			'devtask-bootstrap-style', "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
+			array(),
+			$version_string
+		);
+
 		wp_register_script(
-			'devtask-tailwind-script', "https://cdn.tailwindcss.com",
+			'devtask-bootstrap-script', "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js",
 			array(),
 			$version_string
 		);
@@ -35,10 +47,13 @@ if ( ! function_exists( 'devtask_scripts_styles' ) ) :
 		);
 
 		// Enqueue theme stylesheet.
-		wp_enqueue_script( 'devtask-tailwind-script' );
+		wp_enqueue_style('devtask-bootstrap-style');
 
 		// Enqueue theme stylesheet.
-		wp_enqueue_style( 'devtask-style' );
+		wp_enqueue_script('devtask-bootstrap-script');
+
+		// Enqueue theme stylesheet.
+		wp_enqueue_style('devtask-style');
 	}
 
 endif;

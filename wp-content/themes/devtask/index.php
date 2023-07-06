@@ -6,7 +6,7 @@
     <title><?php bloginfo('name'); ?></title>
     <?php wp_head(); ?>
 </head>
-<body class="h-full">
+<body class="m-3">
 
     <?php  if ( have_posts() ) : ?>
 
@@ -14,7 +14,11 @@
 
             <?= the_post() ?>
 
-            <h2><?= the_title() ?></h2>
+            <h2><a class="link-primary" href="<?= the_permalink() ?>"><?= the_title() ?></a></h2>
+
+            <p><?= the_content() ?></p>
+
+            <hr>
 
         <?php endwhile ?>
 
