@@ -21,39 +21,23 @@ if ( ! function_exists( 'devtask_scripts_styles' ) ) :
 		$theme_version = wp_get_theme()->get( 'Version' );
 		$version_string = is_string( $theme_version ) ? $theme_version : false;
 
-		// wp_register_script(
-		// 	'devtask-tailwind-script', "https://cdn.tailwindcss.com",
-		// 	array(),
-		// 	$version_string
-		// );
+		// Enqueue google font Roboto
+		wp_enqueue_style("devtask-google-font-roboto", "//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i");
 
-		wp_register_style(
-			'devtask-bootstrap-style', "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
-			array(),
-			$version_string
-		);
+		// Enqueue bootstrap stylesheet.
+		wp_enqueue_style("devtask-bootstrap-style" , "//cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css");
 
-		wp_register_script(
-			'devtask-bootstrap-script', "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js",
-			array(),
-			$version_string
-		);
+		// Enqueue fonts awesome stylesheet.
+		wp_enqueue_style("devtask-font-awesome-style" , "//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
-		wp_register_style(
-			'devtask-style',
-			get_template_directory_uri() . '/style.css',
-			array(),
-			$version_string
-		);
+		// Enqueue bootstrap script.
+		wp_enqueue_script("devtask-bootstrap-script", "//cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js");
+
+		// Enqueue app script.
+		wp_enqueue_script('devtask-script', get_theme_file_uri('/src/index.js'), NULL, true);
 
 		// Enqueue theme stylesheet.
-		wp_enqueue_style('devtask-bootstrap-style');
-
-		// Enqueue theme stylesheet.
-		wp_enqueue_script('devtask-bootstrap-script');
-
-		// Enqueue theme stylesheet.
-		wp_enqueue_style('devtask-style');
+		wp_enqueue_style("devtask-style", get_template_directory_uri() . "/style.css");
 	}
 
 endif;
