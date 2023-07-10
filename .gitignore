@@ -8,7 +8,12 @@
 /wp-admin/
 /wp-content/index.php
 /wp-content/languages
-/wp-content/plugins/
+/wp-content/plugins/askimet/
+/wp-content/plugins/jetpack/
+/wp-content/plugins/woocommerce/
+/wp-content/plugins/mailpoet/
+/wp-content/plugins/pinterest-for-woocommerce
+/wp-content/plugins/woocommerce-payments/
 /wp-content/plugins/index.php
 /wp-content/themes/index.php
 /wp-includes/
