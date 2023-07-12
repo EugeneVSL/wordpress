@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Google Listings and Ads plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google Listings and Ads 2.4.10\n"
+"Project-Id-Version: Google Listings and Ads 2.4.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-listings-and-ads\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-06-13T12:18:24+00:00\n"
+"POT-Creation-Date: 2023-07-11T03:48:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: google-listings-and-ads\n"
@@ -393,16 +393,30 @@ msgstr ""
 msgid "Error retrieving status"
 msgstr ""
 
-#: src/API/Google/Merchant.php:94
+#: src/API/Google/ExceptionTrait.php:139
+msgid "An unknown error occurred in the Shopping Content Service."
+msgstr ""
+
+#: src/API/Google/Merchant.php:95
 msgid "Unable to claim website."
 msgstr ""
 
-#: src/API/Google/Merchant.php:96
+#: src/API/Google/Merchant.php:97
 msgid "Website already claimed, use overwrite to complete the process."
 msgstr ""
 
-#: src/API/Google/Merchant.php:238
+#. translators: %s Error message
+#: src/API/Google/Merchant.php:197
+msgid "Unable to retrieve Merchant Center account: %s"
+msgstr ""
+
+#: src/API/Google/Merchant.php:248
 msgid "Unable to retrieve Merchant Center account status."
+msgstr ""
+
+#. translators: %s Error message
+#: src/API/Google/Merchant.php:298
+msgid "Unable to update Merchant Center account: %s"
 msgstr ""
 
 #: src/API/Google/MerchantReport.php:96
@@ -614,30 +628,30 @@ msgstr ""
 msgid "The URL linked to the post/term"
 msgstr ""
 
-#: src/API/Site/Controllers/Ads/BudgetRecommendationController.php:99
+#: src/API/Site/Controllers/Ads/BudgetRecommendationController.php:100
 msgid "No currency available for the Ads account."
 msgstr ""
 
-#: src/API/Site/Controllers/Ads/BudgetRecommendationController.php:116
+#: src/API/Site/Controllers/Ads/BudgetRecommendationController.php:117
 msgid "Cannot find any budget recommendations."
 msgstr ""
 
-#: src/API/Site/Controllers/Ads/BudgetRecommendationController.php:154
+#: src/API/Site/Controllers/Ads/BudgetRecommendationController.php:155
 #: src/API/Site/Controllers/ShippingRateSchemaTrait.php:42
 msgid "The currency to use for the shipping rate."
 msgstr ""
 
-#: src/API/Site/Controllers/Ads/BudgetRecommendationController.php:165
+#: src/API/Site/Controllers/Ads/BudgetRecommendationController.php:166
 #: src/API/Site/Controllers/MerchantCenter/ShippingTimeController.php:260
 #: src/API/Site/Controllers/ShippingRateSchemaTrait.php:34
 msgid "Country code in ISO 3166-1 alpha-2 format."
 msgstr ""
 
-#: src/API/Site/Controllers/Ads/BudgetRecommendationController.php:170
+#: src/API/Site/Controllers/Ads/BudgetRecommendationController.php:171
 msgid "The lower bound recommended daily budget for a country."
 msgstr ""
 
-#: src/API/Site/Controllers/Ads/BudgetRecommendationController.php:174
+#: src/API/Site/Controllers/Ads/BudgetRecommendationController.php:175
 msgid "The upper bound recommended daily budget for a country."
 msgstr ""
 
@@ -834,11 +848,7 @@ msgstr ""
 msgid "Array of country codes in ISO 3166-1 alpha-2 format."
 msgstr ""
 
-#: src/API/Site/Controllers/CountryCodeTrait.php:53
-msgid "No countries provided."
-msgstr ""
-
-#: src/API/Site/Controllers/CountryCodeTrait.php:61
+#: src/API/Site/Controllers/CountryCodeTrait.php:72
 msgid "Country is not supported"
 msgstr ""
 
@@ -1354,14 +1364,6 @@ msgstr ""
 msgid "Google Listings and Ads requires a 64 bit version of PHP."
 msgstr ""
 
-#: src/Exception/MerchantApiException.php:31
-msgid "Unable to retrieve Merchant Center account."
-msgstr ""
-
-#: src/Exception/MerchantApiException.php:45
-msgid "Unable to update Merchant Center account."
-msgstr ""
-
 #: src/Integration/YoastWooCommerceSeo.php:202
 msgid "- Yoast SEO -"
 msgstr ""
@@ -1510,6 +1512,7 @@ msgstr ""
 #: src/Notes/SetupCampaign.php:81
 #: js/build/index.js:52
 #: js/build/index.js:54
+#: js/build/index.js:90
 #: js/build/index.js:94
 #: js/build/index.js:107
 msgid "Learn more"
@@ -2165,6 +2168,15 @@ msgid "If you’re already using another extension to manage your product feed w
 msgstr ""
 
 #: js/build/index.js:3
+msgid "Unknown error occurred."
+msgstr ""
+
+#: js/build/index.js:3
+msgctxt "The spacing between sentences. It's a space in English. Please use an empty string if no spacing is needed in that language."
+msgid " "
+msgstr ""
+
+#: js/build/index.js:3
 msgctxt "Capitalized asset field name as the start of an error message"
 msgid "The first display URL path"
 msgstr ""
@@ -2407,14 +2419,6 @@ msgid "There was an error loading shipping times."
 msgstr ""
 
 #: js/build/index.js:19
-msgid "There was an error trying to add / update shipping times. Please try again later."
-msgstr ""
-
-#: js/build/index.js:19
-msgid "There was an error trying to delete shipping times. Please try again later."
-msgstr ""
-
-#: js/build/index.js:19
 msgid "There was an error loading merchant center settings."
 msgstr ""
 
@@ -2439,15 +2443,15 @@ msgid "There was an error loading Google Ads account info."
 msgstr ""
 
 #: js/build/index.js:19
-msgid "Unable to disconnect your Google account. Please try again later."
+msgid "Unable to disconnect your Google account."
 msgstr ""
 
 #: js/build/index.js:19
-msgid "Unable to disconnect your Google Ads account. Please try again later."
+msgid "Unable to disconnect your Google Ads account."
 msgstr ""
 
 #: js/build/index.js:19
-msgid "Unable to disconnect all your accounts. Please try again later."
+msgid "Unable to disconnect all your accounts."
 msgstr ""
 
 #: js/build/index.js:19
@@ -2459,7 +2463,11 @@ msgid "There was an error getting your Google Ads accounts."
 msgstr ""
 
 #: js/build/index.js:19
-msgid "Unable to update your Google Merchant Center contact information. Please try again later."
+msgid "Unable to update your Google Merchant Center contact information."
+msgstr ""
+
+#: js/build/index.js:19
+msgid "Unable to request the verification code. This may be due to an invalid phone number or the limit of five attempts to verify the same phone number every four hours."
 msgstr ""
 
 #: js/build/index.js:19
@@ -2467,7 +2475,7 @@ msgid "Unable to initiate the verification code request. A maximum of five attem
 msgstr ""
 
 #: js/build/index.js:19
-msgid "Unable to request the phone verification code. Please try again later."
+msgid "Unable to request the phone verification code."
 msgstr ""
 
 #: js/build/index.js:19
@@ -2479,23 +2487,11 @@ msgid "The verification code has expired. Please initiate a new verification req
 msgstr ""
 
 #: js/build/index.js:19
-msgid "Unable to verify your phone number. Please try again later."
+msgid "Unable to verify your phone number."
 msgstr ""
 
 #: js/build/index.js:19
 msgid "There was an error loading target audience."
-msgstr ""
-
-#: js/build/index.js:19
-msgid "Unable to create your paid ads campaign. Please try again later."
-msgstr ""
-
-#: js/build/index.js:19
-msgid "Unable to update your paid ads campaign. Please try again later."
-msgstr ""
-
-#: js/build/index.js:19
-msgid "Unable to delete your paid ads campaign. Please try again later."
 msgstr ""
 
 #: js/build/index.js:19
@@ -2511,7 +2507,7 @@ msgid "There was an error loading your merchant center setup status."
 msgstr ""
 
 #: js/build/index.js:19
-msgid "Unable to update the channel visibility of products. Please try again later."
+msgid "Unable to update the channel visibility of products."
 msgstr ""
 
 #: js/build/index.js:19
@@ -4116,7 +4112,7 @@ msgstr ""
 #: js/build/index.js:78
 #: js/build/index.js:90
 #: js/build/index.js:92
-msgid "Boost your campaign"
+msgid "Optimize your campaign"
 msgstr ""
 
 #: js/build/index.js:78
@@ -4125,7 +4121,7 @@ msgid "New"
 msgstr ""
 
 #: js/build/index.js:78
-msgid "Create ads that boost visibility and maximize campaign performance using dynamic ad assets."
+msgid "Add images, headlines, and descriptions to drive better engagement and more sales."
 msgstr ""
 
 #: js/build/index.js:78
@@ -4318,11 +4314,11 @@ msgid "To create your display URL, Google Ads will combine the domain (for examp
 msgstr ""
 
 #: js/build/index.js:90
-msgid "Add dynamic ad assets <optional>(Optional)</optional>"
+msgid "Add additional assets <optional>(Optional)</optional>"
 msgstr ""
 
 #: js/build/index.js:90
-msgid "Create ads that effectively boost visibility and generate maximum conversions. Google will mix and match assets to create optimized ads in a variety of formats— maximizing your campaign’s performance."
+msgid "Upload text and image assets to effectively reach and engage your target shoppers. Google will mix and match your assets, continually testing combinations to create personalized and optimal shopping experiences."
 msgstr ""
 
 #: js/build/index.js:90
@@ -4338,15 +4334,15 @@ msgid "What makes these ads different from product ads?"
 msgstr ""
 
 #: js/build/index.js:90
-msgid "Dynamic ad assets can elevate your campaign by offering a variety of ad combinations that capture your audience's attention and generate maximum engagement. By leveraging Google's asset-mixing technology, your ads can be optimized to deliver the right message, to the right people, at the right time."
+msgid "Text and image assets can elevate your campaign by offering a variety of ad combinations that capture your audience's attention and generate maximum engagement. By leveraging Google's asset-mixing technology, your ads can be optimized to deliver the right message, to the right people, at the right time."
 msgstr ""
 
 #: js/build/index.js:90
-msgid "Compared to product ads—which showcase individual products and are designed to drive direct sales and revenue— ads with dynamic assets are typically used to highlight your business, generate interest, and attract new customers. While both types of ads can drive conversions, using them together can generate even greater results."
+msgid "Compared to product ads—which showcase individual products and are designed to drive direct sales and revenue— ads with creative assets are typically used to highlight your business, generate interest, and attract new customers. While both types of ads can drive conversions, using them together can generate even greater results."
 msgstr ""
 
 #: js/build/index.js:90
-msgid "Take your campaign to the next level with dynamic ad assets"
+msgid "Drive greater performance by adding text and image assets to create personalized and engaging ads"
 msgstr ""
 
 #: js/build/index.js:90
@@ -5121,6 +5117,10 @@ msgstr ""
 
 #: js/build/index.js:113
 msgid "Loading Attribute Mapping rules"
+msgstr ""
+
+#: js/build/index.js:113
+msgid "You have no attribute rules"
 msgstr ""
 
 #: js/build/index.js:113
