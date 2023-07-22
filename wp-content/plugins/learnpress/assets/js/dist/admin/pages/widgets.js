@@ -14,8 +14,7 @@ function formatCourse(repo) {
 function formatCourseSelection(repo) {
   return repo.title.rendered || repo.text;
 }
-function autocompleteWidget() {
-  let widget = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+function autocompleteWidget(widget = null) {
   const searchs = $('.lp-widget_select_course');
   const wpRestUrl = searchs.data('rest-url');
   const postType = searchs.data('post_type') || 'lp_course';
@@ -56,10 +55,36 @@ document.addEventListener('DOMContentLoaded', function (event) {
   } else {
     $(document).on('learnpress/widgets/select', function () {
       autocompleteWidget();
+      sortItem();
     });
     autocompleteWidget();
   }
 });
+
+//Sortable checkbox
+document.addEventListener('DOMContentLoaded', function (event) {
+  sortItem();
+});
+$(document).on('widget-added widget-updated', function (event) {
+  sortItem();
+});
+function sortItem() {
+  $('.widget-content .sortable').sortable({
+    handle: '.drag',
+    start(event, ui) {},
+    update(event, ui) {
+      const value = [];
+      $(this).children().map(function () {
+        value.push($(this).find('input').val());
+      });
+      value.join(',');
+      const fieldSort = $(this).closest('.widget-content').find('input.fields-sort');
+      fieldSort.val(value);
+      fieldSort.trigger('change');
+    },
+    stop(event, ui) {}
+  });
+}
 /******/ })()
 ;
 //# sourceMappingURL=widgets.js.map

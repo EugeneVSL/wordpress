@@ -5,7 +5,7 @@ Tags: elearning, education, course, lms, learning management system
 Requires at least: 5.8
 Tested up to: 6.2
 Requires PHP: 7.0
-Stable tag: 4.2.2.4
+Stable tag: 4.2.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -209,6 +209,12 @@ https://www.transifex.com/projects/p/learnpress/
 8. Add-ons of LearnPress.
 
 == Changelog ==
+
+= 4.2.3.2 (2023-07-19) =
+~ Added: widget filter courses, option enable fields want to filter, sort fields, option load widget on REST.
+~ Added: Search course suggest (AJAX).
+~ Added: shortcode filter courses [learn_press_filter_course].
+~ Fixed: error install/update Addon.
 
 = 4.2.3.1 (2023-07-05) =
 ~ Fixed: Security.

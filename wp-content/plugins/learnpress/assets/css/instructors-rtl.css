@@ -8,7 +8,6 @@
 * @version 1.0.0
 */
 .lp-content-area {
-  width: 100%;
   max-width: var(--lp-cotainer-max-with) !important;
   margin: 0 auto;
   padding-left: var(--lp-cotainer-padding);
@@ -26,9 +25,22 @@
  * @since 4.2.3
  * @version 1.0.0
  */
+body .entry-content.has-global-padding {
+  padding-right: 0;
+  padding-left: 0;
+}
+body .wp-site-blocks {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 .learnpress-v4 .lp-content-area {
   --lp-cotainer-max-with: inherit;
   --lp-cotainer-padding: 0;
+}
+.learnpress-v4 .lp-single-course .lp-content-area {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .lp-list-instructors {
@@ -116,14 +128,13 @@
 .learn-press-pagination .page-numbers > li {
   display: inline-block;
   margin: 0;
-  padding: 0 14px;
 }
 .learn-press-pagination .page-numbers > li .page-numbers {
   float: unset;
-  padding: 0;
+  padding: 0 14px;
   color: #666;
   background: transparent;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 300;
   text-decoration: none;
 }

@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Google Listings and Ads plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google Listings and Ads 2.4.11\n"
+"Project-Id-Version: Google Listings and Ads 2.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-listings-and-ads\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-07-11T03:48:47+00:00\n"
+"POT-Creation-Date: 2023-07-18T08:30:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: google-listings-and-ads\n"
@@ -433,7 +433,7 @@ msgid "Unable to log accepted TOS"
 msgstr ""
 
 #: src/API/Google/Middleware.php:105
-#: src/API/Google/SiteVerification.php:57
+#: src/API/Google/SiteVerification.php:59
 #: src/MerchantCenter/AccountService.php:422
 msgid "Invalid site URL."
 msgstr ""
@@ -505,12 +505,14 @@ msgstr ""
 msgid "No result from query"
 msgstr ""
 
-#: src/API/Google/SiteVerification.php:120
-msgid "Unable to retrieve site verification token."
+#. translators: %s Error message
+#: src/API/Google/SiteVerification.php:126
+msgid "Unable to retrieve site verification token: %s"
 msgstr ""
 
-#: src/API/Google/SiteVerification.php:156
-msgid "Unable to insert site verification."
+#. translators: %s Error message
+#: src/API/Google/SiteVerification.php:168
+msgid "Unable to insert site verification: %s"
 msgstr ""
 
 #: src/API/Site/Controllers/Ads/AccountController.php:149
@@ -4319,6 +4321,10 @@ msgstr ""
 
 #: js/build/index.js:90
 msgid "Upload text and image assets to effectively reach and engage your target shoppers. Google will mix and match your assets, continually testing combinations to create personalized and optimal shopping experiences."
+msgstr ""
+
+#: js/build/index.js:90
+msgid "We auto-populated assets directly from your Final URL. We encourage you to edit or add more in order to best showcase your business."
 msgstr ""
 
 #: js/build/index.js:90

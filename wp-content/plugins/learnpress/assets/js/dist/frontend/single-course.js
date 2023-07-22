@@ -965,8 +965,7 @@ const purchaseCourse = () => {
           }
         });
       };
-      const submit = async function (id, btn) {
-        let repurchaseType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      const submit = async (id, btn, repurchaseType = false) => {
         try {
           const response = await wp.apiFetch({
             path: 'lp/v1/courses/purchase-course',
@@ -1115,19 +1114,23 @@ const accordionExtraTab = () => {
   const elements = document.querySelectorAll('.course-extra-box');
   [...elements].map(ele => {
     const title = ele.querySelector('.course-extra-box__title');
+    ele.classList.remove('active');
+    const content = ele.querySelector('.course-extra-box__content');
+    content.style.height = '0';
     title.addEventListener('click', () => {
-      const panel = title.nextElementSibling;
-      const eleActive = document.querySelector('.course-extra-box.active');
-      if (eleActive && !ele.classList.contains('active')) {
-        eleActive.classList.remove('active');
-        eleActive.querySelector('.course-extra-box__content').style.display = 'none';
-      }
-      if (!ele.classList.contains('active')) {
-        ele.classList.add('active');
-        panel.style.display = 'block';
-      } else {
+      const isActive = ele.classList.contains('active');
+      [...elements].forEach(otherEle => {
+        if (otherEle !== ele) {
+          otherEle.classList.remove('active');
+          otherEle.querySelector('.course-extra-box__content').style.height = '0';
+        }
+      });
+      if (isActive) {
         ele.classList.remove('active');
-        panel.style.display = 'none';
+        content.style.height = '0';
+      } else {
+        ele.classList.add('active');
+        content.style.height = content.scrollHeight + 'px';
       }
     });
   });

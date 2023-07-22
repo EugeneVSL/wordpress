@@ -106,8 +106,7 @@ let elNotifyActionWrapper;
 const isHandling = [];
 
 // API get list addons.
-const getAddons = function () {
-  let set = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+const getAddons = (set = '') => {
   const params = tab ? `?tab=${tab}` : `?${set}`;
   fetch(_api__WEBPACK_IMPORTED_MODULE_0__["default"].apiAddons + params, {
     method: 'GET',
@@ -141,7 +140,8 @@ const addonsAction = (data, callBack) => {
   fetch(_api__WEBPACK_IMPORTED_MODULE_0__["default"].apiAddonAction, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'X-WP-Nonce': lpGlobalSettings.nonce
     },
     body: JSON.stringify({
       ...data

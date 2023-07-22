@@ -94,11 +94,16 @@ const jsHandlePageCourses = () => {
     console.log('lpGlobalSettings is undefined');
     return;
   }
+  let currentUrl = window.location.href;
+  const hasParams = currentUrl.includes('?');
+  if (hasParams) {
+    currentUrl = currentUrl.split('?')[0];
+  }
   const urlQueryString = window.location.search;
   const urlSearchParams = new URLSearchParams(urlQueryString);
   let filterCourses = {};
   let skeleton;
-  let skeletonClone;
+  //let skeletonClone;
   let isLoading = false;
   let firstLoad = 1;
   let elNoLoadAjaxFirst;
@@ -127,7 +132,10 @@ const jsHandlePageCourses = () => {
   const lpArchiveCourse = () => {
     // Case load ajax when reload enable.
     if (!lpGlobalSettings.lpArchiveNoLoadAjaxFirst) {
-      elListCourse.innerHTML = dataHtml;
+      if (skeleton) {
+        skeleton.insertAdjacentHTML('beforebegin', dataHtml);
+        skeleton.style.display = 'none';
+      }
       const pagination = paginationHtml;
       const paginationEle = document.querySelector('.learn-press-pagination');
       if (paginationEle) {
@@ -152,14 +160,21 @@ const jsHandlePageCourses = () => {
     }
     isLoading = true;
 
+    // Change url by params filter courses
+    const urlPush = lpArchiveAddQueryArgs(currentUrl, args);
+    window.history.pushState('', '', urlPush);
+
     // Append skeleton to list.
-    if (skeletonClone) {
-      elListCourse.append(skeletonClone);
+    /*if ( skeletonClone ) {
+    	elListCourse.append( skeletonClone );
+    }*/
+    if (skeleton) {
+      skeleton.style.display = 'block';
     }
-    const urlCourseArchive = lpArchiveAddQueryArgs(_api__WEBPACK_IMPORTED_MODULE_0__["default"].apiCourses, {
-      ...lpGlobalSettings.lpArchiveSkeleton,
-      ...args
-    });
+    filterCourses = args;
+    // Save filter courses to Storage
+    window.localStorage.setItem('lp_filter_courses', JSON.stringify(args));
+    const urlCourseArchive = lpArchiveAddQueryArgs(_api__WEBPACK_IMPORTED_MODULE_0__["default"].apiCourses, args);
     const url = _api__WEBPACK_IMPORTED_MODULE_0__["default"].apiCourses + urlCourseArchive.search;
     let paramsFetch = {
       method: 'GET'
@@ -175,11 +190,27 @@ const jsHandlePageCourses = () => {
     fetch(url, paramsFetch).then(response => response.json()).then(response => {
       dataHtml = response.data.content || '';
       paginationHtml = response.data.pagination || '';
-      if (!skeletonClone && skeleton) {
-        skeletonClone = skeleton.cloneNode(true);
-      }
+
+      /*if ( ! skeletonClone && skeleton ) {
+      	skeletonClone = skeleton.cloneNode( true );
+      }*/
+
       if (!firstLoad) {
-        elListCourse.innerHTML = dataHtml;
+        const elLis = elListCourse.querySelectorAll(':not(.lp-archive-course-skeleton)');
+        elLis.forEach(elLi => {
+          const parent = elLi.closest('.lp-archive-course-skeleton');
+          if (parent) {
+            return;
+          }
+          elLi.remove();
+        });
+        if (skeleton) {
+          skeleton.insertAdjacentHTML('beforebegin', dataHtml);
+          skeleton.style.display = 'none';
+        }
+
+        //elListCourse.innerHTML = dataHtml;
+
         const pagination = paginationHtml;
         const paginationEle = document.querySelector('.learn-press-pagination');
         if (paginationEle) {
@@ -215,32 +246,30 @@ const jsHandlePageCourses = () => {
       } else {
         firstLoad = 0;
       }
-
-      // Save filter courses to Storage
-      window.localStorage.setItem('lp_filter_courses', JSON.stringify(args));
-      // Change url by params filter courses
-      const urlPush = lpArchiveAddQueryArgs(document.location, args);
-      window.history.pushState('', '', urlPush);
     });
   };
 
   // Call API load courses when js loaded.
   if (!lpGlobalSettings.lpArchiveNoLoadAjaxFirst) {
-    lpArchiveRequestCourse(filterCourses);
+    lpArchiveRequestCourse({
+      ...lpGlobalSettings.lpArchiveSkeleton,
+      ...urlParams
+    });
   } else {
     firstLoad = 0;
   }
   const lpArchiveSearchCourse = () => {
     const searchForm = document.querySelectorAll('form.search-courses');
-    filterCourses = JSON.parse(window.localStorage.getItem('lp_filter_courses')) || {};
+    //filterCourses = JSON.parse( window.localStorage.getItem( 'lp_filter_courses' ) ) || {};
+
     searchForm.forEach(s => {
       const search = s.querySelector('input[name="c_search"]');
       const btn = s.querySelector('[type="submit"]');
       let timeOutSearch;
       search.addEventListener('keyup', event => {
-        if (skeleton) {
-          skeleton.style.display = 'block';
-        }
+        /*if ( skeleton ) {
+        	skeleton.style.display = 'block';
+        }*/
         event.preventDefault();
         const s = event.target.value.trim();
         if (!s || s && s.length > 2) {
@@ -251,9 +280,7 @@ const jsHandlePageCourses = () => {
             btn.classList.add('loading');
             filterCourses.c_search = s;
             filterCourses.paged = 1;
-            lpArchiveRequestCourse({
-              ...filterCourses
-            });
+            lpArchiveRequestCourse(filterCourses);
           }, 800);
         }
       });
@@ -272,23 +299,24 @@ const jsHandlePageCourses = () => {
       if (!elArchive) {
         return;
       }
-      if (skeleton) {
-        skeleton.style.display = 'block';
-      }
+
+      /*if ( skeleton ) {
+      	skeleton.style.display = 'block';
+      }*/
 
       // Scroll to archive element
       elArchive.scrollIntoView({
         behavior: 'smooth'
       });
-      filterCourses = JSON.parse(window.localStorage.getItem('lp_filter_courses')) || {};
+
+      //filterCourses = JSON.parse( window.localStorage.getItem( 'lp_filter_courses' ) ) || {};
+
       const urlString = event.currentTarget.getAttribute('href');
       if (urlString) {
         const current = [...paginationEle].filter(el => el.classList.contains('current'));
         const paged = event.currentTarget.textContent || ele.classList.contains('next') && parseInt(current[0].textContent) + 1 || ele.classList.contains('prev') && parseInt(current[0].textContent) - 1;
         filterCourses.paged = paged;
-        lpArchiveRequestCourse({
-          ...filterCourses
-        });
+        lpArchiveRequestCourse(filterCourses);
       }
     }));
   };
@@ -323,7 +351,7 @@ const jsHandlePageCourses = () => {
     skeleton = document.querySelector('.lp-archive-course-skeleton');
     elArchive = document.querySelector('.lp-archive-courses');
     if (elArchive) {
-      elListCourse = elArchive.querySelector('ul.learn-press-courses');
+      elListCourse = elArchive.querySelector('.learn-press-courses');
     }
     let canLoad = false;
     if (elListCourse && skeleton) {
