@@ -35,14 +35,15 @@ if ( ! function_exists( 'devtask_scripts_styles' ) ) :
 		// Enqueue fonts awesome stylesheet.
 		wp_enqueue_style("font-awesome" , "//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
-		// Enqueue bootstrap script.
+		// Enqueue theme stylesheet.
+		wp_enqueue_style("devtask", get_template_directory_uri() . "/style.css", [], filemtime(get_template_directory() . "/style.css"), "all");
+	
+		// // Enqueue bootstrap script.
 		wp_enqueue_script("bootstrap", "//cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js", ['jquery'], false, true);
 
 		// Enqueue app script.
 		wp_enqueue_script('devtask', get_theme_file_uri('/assets/main.js'), [], filemtime(get_template_directory() . "/assets/main.js"), true);
 
-		// Enqueue theme stylesheet.
-		wp_enqueue_style("devtask", get_template_directory_uri() . "/style.css", [], filemtime(get_template_directory() . "/style.css"), "all");
 	}
 
 endif;

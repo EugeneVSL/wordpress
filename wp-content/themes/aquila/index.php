@@ -1,8 +1,8 @@
-<?= get_header(); ?>
+<?php
 
-<div class="content">
-
-</div>
+    get_header(); 
 
 
-<?= get_footer(); ?>
+    get_footer();
+    
+?>
