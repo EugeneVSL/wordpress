@@ -3,7 +3,9 @@
  * 
  */
 
- if ( ! function_exists( 'website_features' ) ) :
+require_once ABSPATH . 'vendor/autoload.php';
+
+if ( ! function_exists( 'website_features' ) ) :
 
 	function website_features() {
 

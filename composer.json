@@ -1,0 +1,15 @@
+{
+    "name": "eugen/wordpress",
+    "autoload": {
+        "psr-4": {
+            "Aquila\\": "wp-content/themes/aquila/inc/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Eugene",
+            "email": "eugene@example.com"
+        }
+    ],
+    "require": {}
+}
